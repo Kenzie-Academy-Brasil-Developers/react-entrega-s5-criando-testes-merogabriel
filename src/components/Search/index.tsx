@@ -1,32 +1,34 @@
-import React from "react";
-import { Input, Button, Icon, Header } from "semantic-ui-react";
-import { useLocateCep } from "../../providers/CepProvider";
+import React from 'react'
+import { Input, Button, Icon, Header } from 'semantic-ui-react'
+import { useLocateCep } from '../../providers/CepProvider'
 
 const Search = () => {
-  const { cepNumber, setCepNumber, handleSearch } = useLocateCep();
+  const { cepNumber, setCepNumber, handleSearch } = useLocateCep()
   return (
     <>
-      <Header as="h2" icon>
-        <Icon name="map" />
+      <Header as='h2' icon>
+        <Icon name='map' />
         Busca de endereço
       </Header>
-      <div className="Search">
+      <div className='Search'>
         <Input
-          type="number"
-          placeholder="Insira o CEP"
+          name='inputsearch'
+          type='number'
+          placeholder='Insira o CEP'
           onChange={(event) => setCepNumber(event.target.value)}
         />
         <Button
+          data-testid='button'
           primary
           disabled={!cepNumber}
           onClick={() => handleSearch(cepNumber)}
         >
-          <Icon name="search" />
+          <Icon name='search' />
           Buscar pelo CEP
         </Button>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Search;
+export default Search
